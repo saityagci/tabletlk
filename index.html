@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TableTalk AI – Your Restaurant’s Voice</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -18,7 +19,7 @@
       background-size: cover;
       background-color: #f8f1e7;
       background-attachment: scroll;
-      }
+    }
 
 
     @media (min-width: 768px) {
@@ -60,47 +61,47 @@
 <div id="tsparticles"></div>
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
-
-<!-- Modal -->
+<!-- Model -->
 <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-  <div class="bg-black rounded-xl shadow-lg max-w-xl w-full">
-    <div class="bg-[#1cbfcf] p-8 rounded-xl text-black">
+  <!-- Outer wrapper (centered modal box) with  -->
+  <div class="rounded-xl shadow-lg max-w-xl w-full" style="background-color: #497a9b;">
+    <div class="p-8 rounded-xl text-white">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-white">Schedule Your Demo</h2>
+        <h2 class="text-2xl font-bold">Schedule Your Demo</h2>
         <button onclick="toggleModal(false)" class="text-white text-2xl hover:text-gray-300">&times;</button>
       </div>
 
       <form id="demoForm" class="space-y-6">
 
         <div>
-          <label class="block text-white font-semibold mb-1">First Name*</label>
+          <label class="block text-white font-semibold mb-1">First Name</label>
           <input type="text" name="firstName" placeholder="First name"
-                 class="w-full p-3 rounded-full text-black placeholder-gray-400" required>
+                 class="w-full p-3 rounded-full text-black placeholder-gray-400 bg-white" required>
         </div>
 
         <div>
-          <label class="block text-white font-semibold mb-1">Last Name*</label>
+          <label class="block text-white font-semibold mb-1">Last Name</label>
           <input type="text" name="lastName" placeholder="Last name"
-                 class="w-full p-3 rounded-full text-black placeholder-gray-400" required>
+                 class="w-full p-3 rounded-full text-black placeholder-gray-400 bg-white" required>
         </div>
 
         <div class="flex space-x-4">
           <div class="w-1/2">
-            <label class="block text-white font-semibold mb-1">Email*</label>
+            <label class="block text-white font-semibold mb-1">Email</label>
             <input type="email" name="email" placeholder="email@domain.com"
-                   class="w-full p-3 rounded-full text-black placeholder-gray-400" required>
+                   class="w-full p-3 rounded-full text-black placeholder-gray-400 bg-white" required>
           </div>
           <div class="w-1/2">
-            <label class="block text-white font-semibold mb-1">Phone Number*</label>
+            <label class="block text-white font-semibold mb-1">Phone Number</label>
             <input type="tel" name="phone" placeholder="Phone number"
-                   class="w-full p-3 rounded-full text-black placeholder-gray-400" required>
+                   class="w-full p-3 rounded-full text-black placeholder-gray-400 bg-white" required>
           </div>
         </div>
 
         <div>
           <label class="block text-white font-semibold mb-1">Tell us about your needs</label>
           <textarea name="message" placeholder="How can we help?" rows="4"
-                    class="w-full p-3 rounded-xl text-black placeholder-gray-400 resize-none" required></textarea>
+                    class="w-full p-3 rounded-xl text-black placeholder-gray-400 bg-white resize-none" required></textarea>
         </div>
 
         <div class="flex items-start space-x-2 text-sm text-white">
@@ -109,10 +110,10 @@
         </div>
 
         <button type="submit"
-                class="w-full bg-orange-500 text-white py-3 rounded-full font-semibold hover:bg-orange-600 transition">
+                style="color: #183D3D;"
+                class="w-full bg-white py-3 rounded-full font-semibold hover:bg-gray-100 transition">
           Submit
         </button>
-
       </form>
     </div>
   </div>
@@ -271,6 +272,7 @@
   }
 </style>
 
+
 <style>
   @keyframes slide {
     0% { transform: translateX(0%); }
@@ -333,6 +335,7 @@
     return false; // Prevent default form submission
   }
 </script>
+<!-- Vapi Integration Script -->
 <script>
   var vapiInstance = null;
   const assistant = "e00c3cc6-632b-404a-9346-84d196194bc5"; // Your Assistant ID
@@ -430,7 +433,7 @@
       alert('Error submitting form.');
     }
   });
-  <img src="../../wallpaper.png" height="1024" width="1536"/></script>
+  </script>
 
 
 </body>
