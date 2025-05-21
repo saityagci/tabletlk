@@ -11,11 +11,15 @@
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
     }
-    .gradient-bg {
-      background: linear-gradient(135deg, #f8f1e7, #f8f1e7);
-      position: relative;
-      z-index: 1;
-    }
+
+    .wallpaper-body{background:
+            linear-gradient(to bottom, rgba(248,241,231,0.1), rgba(248,241,231,0.8)),
+            url('wallpaper1.png') no-repeat center center fixed;
+      background-size: cover;
+      background-color: #f8f1e7;}
+
+
+
     .animated-waves::before {
       content: '';
       position: absolute;
@@ -45,7 +49,7 @@
     }
   </style>
 </head>
-<body class="gradient-bg animated-waves text-gray-800 min-h-screen">
+<body class="wallpaper-body text-gray-800 min-h-screen">
 <div id="tsparticles"></div>
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
@@ -120,38 +124,38 @@
 
 
 <!-- Hero Section -->
-<section class="text-center px-6 py-24 h-[calc(100vh-100px)] flex flex-col justify-center">
-  <h4 class="uppercase text-sm tracking-widest font-semibold mb-4" style="color: #70a2cb;">The #1 AI Voice Assistant for Restaurant</h4>
-  <h1 class="text-4xl font-bold mb-4"style="color: #1e2d3a;">Seamless Conversations, Exceptional Hospitality</h1>
-  <p class="text-xl text-gray-600 mb-10"style="color: #1e2d3a;">Designed for Modern Hospitality, Delivered by TableTalk AI</p>
+<section class="landing-wallpaper text-center px-6 py-24 h-[calc(100vh-100px)] flex flex-col justify-center">
+  <h4 class="uppercase text-sm tracking-widest font-semibold mb-4" style="color: #6a9ec9;">The #1 AI Voice Assistant for Restaurant</h4>
+  <h1 class="text-4xl font-bold mb-4"style="color: #000305;">Seamless Conversations, Exceptional Hospitality</h1>
+  <p class="text-xl text-gray-600 mb-10"style="color: #000305;">Designed for Modern Hospitality, Delivered by TableTalk AI</p>
 </section>
 
 
 <!-- How It Works -->
 
 <section id="guest-experience" class="pt-24 pb-24 px-6 text-center">
-  <h2 class="text-3xl font-bold mb-16"style="color: #1e2d3a;" >A Fully Handled Guest Experience</h2>
+  <h2 class="text-3xl font-bold mb-16"style="color: #000305;" >A Fully Handled Guest Experience</h2>
   <div class="flex flex-col md:flex-row items-center justify-center gap-12 max-w-6xl mx-auto">
     <div class="flex flex-col items-center text-center max-w-xs">
       <div class="bg-[#1e2d3a]-100 rounded-full w-24 h-24 flex items-center justify-center mb-4">
         <img src="https://unpkg.com/lucide-static@0.321.0/icons/phone.svg" alt="Phone icon" class="w-10 h-10" />
       </div>
-      <h3 class="text-xl font-semibold mb-2"style="color: #1e2d3a;">Guest Dials</h3>
-      <p class="text-gray-600"style="color: #1e2d3a;">TableTalk responds with poise and professionalism.</p>
+      <h3 class="text-xl font-semibold mb-2"style="color: #000305;">Guest Dials</h3>
+      <p class="text-gray-600"style="color: #000305;">TableTalk responds with poise and professionalism.</p>
     </div>
     <div class="flex flex-col items-center text-center max-w-xs">
       <div class="bg-[#1e2d3a]-100 rounded-full w-24 h-24 flex items-center justify-center mb-4">
         <img src="https://unpkg.com/lucide-static@0.321.0/icons/brain.svg" alt="Brain icon" class="w-10 h-10" />
       </div>
-      <h3 class="text-xl font-semibold mb-2"style="color: #1e2d3a;">Understands Intent</h3>
-      <p class="text-gray-600"style="color: #1e2d3a;">Reservations, questions, or updates are smoothly recognized.</p>
+      <h3 class="text-xl font-semibold mb-2"style="color: #000305;">Understands Intent</h3>
+      <p class="text-gray-600"style="color: #000305;">Reservations, questions, or updates are smoothly recognized.</p>
     </div>
     <div class="flex flex-col items-center text-center max-w-xs">
       <div class="bg-[#1e2d3a]-100 rounded-full w-24 h-24 flex items-center justify-center mb-4">
         <img src="https://unpkg.com/lucide-static@0.321.0/icons/check-circle.svg" alt="Check icon" class="w-10 h-10" />
       </div>
-      <h3 class="text-xl font-semibold mb-2"style="color: #1e2d3a;">Takes Action</h3>
-      <p class="text-gray-600"style="color: #1e2d3a;">Confirms bookings, sends messages, and notifies your team.</p>
+      <h3 class="text-xl font-semibold mb-2"style="color: #000305;">Takes Action</h3>
+      <p class="text-gray-600"style="color: #000305;">Confirms bookings, sends messages, and notifies your team.</p>
     </div>
   </div>
 </section>
@@ -162,32 +166,32 @@
 <!-- Tailored Elegance -->
 <section class="py-24 px-6">
   <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-4xl font-bold mb-6"style="color: #1e2d3a;">Tailored Elegance, Powered by AI</h2>
+    <h2 class="text-4xl font-bold mb-6"style="color: #000305;">Tailored Elegance, Powered by AI</h2>
     <p class="text-lg text-gray-600 mb-12 txt-#1e2d3a" >Everything your restaurant needs to speak fluently with every guest – automatically, intelligently, and beautifully</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #f8f1e7;">
-        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Multilingual Finesse</h3>
-        <p class="text-gray-700"style="color: #1e2d3a;">Human-like conversation in any language your guests speak</p>
+        <h3 class="text-lg font-semibold mb-2"style="color: #000305;">Multilingual Finesse</h3>
+        <p class="text-gray-700"style="color: #000305;">Human-like conversation in any language your guests speak</p>
       </div>
       <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
-        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">24/7 Scheduling</h3>
-        <p class="text-gray-700"style="color: #1e2d3a;">Reservations handled around the clock — even while you sleep</p>
+        <h3 class="text-lg font-semibold mb-2"style="color: #000305;">24/7 Scheduling</h3>
+        <p class="text-gray-700"style="color: #000305;">Reservations handled around the clock — even while you sleep</p>
       </div>
       <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
-        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Brand Trained</h3>
-        <p class="text-gray-700"style="color: #1e2d3a;">Knows your menu, service style, and guest expectations</p>
+        <h3 class="text-lg font-semibold mb-2"style="color: #000305;">Brand Trained</h3>
+        <p class="text-gray-700"style="color: #000305;">Knows your menu, service style, and guest expectations</p>
       </div>
       <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
-        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Guest Insights</h3>
-        <p class="text-gray-700"style="color: #1e2d3a;">Access full transcripts and booking analytics anytime.</p>
+        <h3 class="text-lg font-semibold mb-2"style="color: #000305;">Guest Insights</h3>
+        <p class="text-gray-700"style="color: #000305;">Access full transcripts and booking analytics anytime.</p>
       </div>
       <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
-        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Instant Notifications to Your Team</h3>
-        <p class="text-gray-700"style="color: #1e2d3a;">Stay in control with real-time updates on every guest interaction</p>
+        <h3 class="text-lg font-semibold mb-2"style="color: #000305;">Instant Notifications to Your Team</h3>
+        <p class="text-gray-700"style="color: #000305;">Stay in control with real-time updates on every guest interaction</p>
       </div>
       <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
-        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Real-Time CRM Integration</h3>
-        <p class="text-gray-700"style="color: #1e2d3a;">Syncs with your tools to check availability and log bookings instantly</p>
+        <h3 class="text-lg font-semibold mb-2"style="color: #000305;">Real-Time CRM Integration</h3>
+        <p class="text-gray-700"style="color: #000305;">Syncs with your tools to check availability and log bookings instantly</p>
       </div>
 
     </div>
@@ -279,7 +283,7 @@
     <p class="text-lg text-gray-700 mb-8">Let TableTalk handle the conversations, so your team can focus on hospitality. Start with a private demo and experience the difference.</p>
     <button
             onclick="toggleModal(true)"
-            style="border: 2px solid #70a2cb; background-color: #70A2CBFF; color: #f6f7f8;"
+            style="border: 2px solid #1e2d3a; background-color: #1e2d3a; color: #f6f7f8;"
             class="px-4 py-2 rounded-full font-semibold hover:opacity-90 transition">
       Request Demo
     </button>
@@ -339,7 +343,7 @@
       display: "block"
     },
     idle: {
-      color: "rgb(112,162,203)", // Elegant blue
+      color: "rgb(176,185,192)", // Elegant blue
       type: "round",
       icon: "https://unpkg.com/lucide-static@0.321.0/icons/mic.svg"
     },
@@ -408,7 +412,7 @@
       });
 
       if (res.ok) {
-       // alert('Thank you! Your demo request has been submitted.');
+        // alert('Thank you! Your demo request has been submitted.');
         toggleModal(false);
       } else {
         alert('Something went wrong. Please try again later.');
@@ -418,7 +422,7 @@
       alert('Error submitting form.');
     }
   });
-</script>
+  <img src="../../wallpaper.png" height="1024" width="1536"/></script>
 
 
 </body>
