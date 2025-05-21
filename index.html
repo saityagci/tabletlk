@@ -336,10 +336,12 @@
   var vapiInstance = null;
   const assistant = "2b12c388-8671-41f6-9c3b-79084d00dc3b"; // Your Assistant ID
   const apiKey = "2b63bf4a-4c39-4d96-90f9-f03f055dd869";  // Your Public API Key
+  const isMobile = window.innerWidth < 768; // simple check for mobile
+
   const buttonConfig = {
     showButton: true,
     position: "top",
-    offset: "409px",
+    offset: isMobile ? "500px" : "400px",  // 👈 lower mic on mobile
     width: "80px",
     height: "80px",
     customStyle: {
@@ -348,17 +350,17 @@
       display: "block"
     },
     idle: {
-      color: "rgb(176,185,192)", // Elegant blue
+      color: "rgb(176,185,192)",
       type: "round",
       icon: "https://unpkg.com/lucide-static@0.321.0/icons/mic.svg"
     },
     loading: {
-      color: "rgb(255, 165, 0)", // Orange loading
+      color: "rgb(255, 165, 0)",
       type: "round",
       icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg"
     },
     active: {
-      color: "rgb(255,0,0)", // Red during active call
+      color: "rgb(255,0,0)",
       type: "round",
       icon: "https://unpkg.com/lucide-static@0.321.0/icons/mic-off.svg"
     }
