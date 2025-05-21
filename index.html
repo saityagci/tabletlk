@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TableTalk AI – Your Restaurant’s Voice</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #f8f1e7, #f8f1e7);
+      position: relative;
+      z-index: 1;
+    }
+    .animated-waves::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background: url('https://www.transparenttextures.com/patterns/connected.png'), linear-gradient(135deg, #f8f1e7 0%, #f8f1e7 100%);
+      animation: waveAnimation 10s ease-in-out infinite alternate;
+      background-size: cover;
+      opacity: 0.3;
+    }
+    @keyframes waveAnimation {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+    @keyframes pulseBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-8px) scale(1.1); }
+    }
+    .microphone-animate {
+      animation: pulseBounce 1.8s ease-in-out infinite;
+    }
+    .modal input:required:invalid {
+      border-color: red;
+    }
+  </style>
+</head>
+<body class="gradient-bg animated-waves text-gray-800 min-h-screen">
+<div id="tsparticles"></div>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
+
+<!-- Modal -->
+<div id="demoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-black rounded-xl shadow-lg max-w-xl w-full">
+    <div class="bg-[#1cbfcf] p-8 rounded-xl text-black">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-white">Schedule Your Demo</h2>
+        <button onclick="toggleModal(false)" class="text-white text-2xl hover:text-gray-300">&times;</button>
+      </div>
+
+      <form id="demoForm" class="space-y-6">
+
+        <div>
+          <label class="block text-white font-semibold mb-1">First Name*</label>
+          <input type="text" name="firstName" placeholder="First name"
+                 class="w-full p-3 rounded-full text-black placeholder-gray-400" required>
+        </div>
+
+        <div>
+          <label class="block text-white font-semibold mb-1">Last Name*</label>
+          <input type="text" name="lastName" placeholder="Last name"
+                 class="w-full p-3 rounded-full text-black placeholder-gray-400" required>
+        </div>
+
+        <div class="flex space-x-4">
+          <div class="w-1/2">
+            <label class="block text-white font-semibold mb-1">Email*</label>
+            <input type="email" name="email" placeholder="email@domain.com"
+                   class="w-full p-3 rounded-full text-black placeholder-gray-400" required>
+          </div>
+          <div class="w-1/2">
+            <label class="block text-white font-semibold mb-1">Phone Number*</label>
+            <input type="tel" name="phone" placeholder="Phone number"
+                   class="w-full p-3 rounded-full text-black placeholder-gray-400" required>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-white font-semibold mb-1">Tell us about your needs</label>
+          <textarea name="message" placeholder="How can we help?" rows="4"
+                    class="w-full p-3 rounded-xl text-black placeholder-gray-400 resize-none" required></textarea>
+        </div>
+
+        <div class="flex items-start space-x-2 text-sm text-white">
+          <input type="checkbox" required class="mt-1">
+          <p>I consent to receive TableTalk AI information and promotional material via phone, email, and SMS.</p>
+        </div>
+
+        <button type="submit"
+                class="w-full bg-orange-500 text-white py-3 rounded-full font-semibold hover:bg-orange-600 transition">
+          Submit
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+
+<header class="flex justify-between items-center px-8 py-6">
+  <div class="text-2xl font-bold" style="color: #1E2D3A;">TableTalk</div>
+  <div>
+    <button onclick="toggleModal(true)" style="border: 2px solid #1e2d3a; color: #1e2d3a;" class="px-4 py-2 rounded-full font-semibold hover:bg-[#F97316] hover:text-white transition">
+      Request Demo
+    </button> </div>
+</header>
+
+
+
+<!-- Hero Section -->
+<section class="text-center px-6 py-24 h-[calc(100vh-100px)] flex flex-col justify-center">
+  <h4 class="uppercase text-sm tracking-widest font-semibold mb-4" style="color: #70a2cb;">The #1 AI Voice Assistant for Restaurant</h4>
+  <h1 class="text-4xl font-bold mb-4"style="color: #1e2d3a;">Seamless Conversations, Exceptional Hospitality</h1>
+  <p class="text-xl text-gray-600 mb-10"style="color: #1e2d3a;">Designed for Modern Hospitality, Delivered by TableTalk AI</p>
+</section>
+
+
+<!-- How It Works -->
+
+<section id="guest-experience" class="pt-24 pb-24 px-6 text-center">
+  <h2 class="text-3xl font-bold mb-16"style="color: #1e2d3a;" >A Fully Handled Guest Experience</h2>
+  <div class="flex flex-col md:flex-row items-center justify-center gap-12 max-w-6xl mx-auto">
+    <div class="flex flex-col items-center text-center max-w-xs">
+      <div class="bg-[#1e2d3a]-100 rounded-full w-24 h-24 flex items-center justify-center mb-4">
+        <img src="https://unpkg.com/lucide-static@0.321.0/icons/phone.svg" alt="Phone icon" class="w-10 h-10" />
+      </div>
+      <h3 class="text-xl font-semibold mb-2"style="color: #1e2d3a;">Guest Dials</h3>
+      <p class="text-gray-600"style="color: #1e2d3a;">TableTalk responds with poise and professionalism.</p>
+    </div>
+    <div class="flex flex-col items-center text-center max-w-xs">
+      <div class="bg-[#1e2d3a]-100 rounded-full w-24 h-24 flex items-center justify-center mb-4">
+        <img src="https://unpkg.com/lucide-static@0.321.0/icons/brain.svg" alt="Brain icon" class="w-10 h-10" />
+      </div>
+      <h3 class="text-xl font-semibold mb-2"style="color: #1e2d3a;">Understands Intent</h3>
+      <p class="text-gray-600"style="color: #1e2d3a;">Reservations, questions, or updates are smoothly recognized.</p>
+    </div>
+    <div class="flex flex-col items-center text-center max-w-xs">
+      <div class="bg-[#1e2d3a]-100 rounded-full w-24 h-24 flex items-center justify-center mb-4">
+        <img src="https://unpkg.com/lucide-static@0.321.0/icons/check-circle.svg" alt="Check icon" class="w-10 h-10" />
+      </div>
+      <h3 class="text-xl font-semibold mb-2"style="color: #1e2d3a;">Takes Action</h3>
+      <p class="text-gray-600"style="color: #1e2d3a;">Confirms bookings, sends messages, and notifies your team.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Tailored Elegance -->
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-6"style="color: #1e2d3a;">Tailored Elegance, Powered by AI</h2>
+    <p class="text-lg text-gray-600 mb-12 txt-#1e2d3a" >Everything your restaurant needs to speak fluently with every guest – automatically, intelligently, and beautifully</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #f8f1e7;">
+        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Multilingual Finesse</h3>
+        <p class="text-gray-700"style="color: #1e2d3a;">Human-like conversation in any language your guests speak</p>
+      </div>
+      <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
+        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">24/7 Scheduling</h3>
+        <p class="text-gray-700"style="color: #1e2d3a;">Reservations handled around the clock — even while you sleep</p>
+      </div>
+      <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
+        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Brand Trained</h3>
+        <p class="text-gray-700"style="color: #1e2d3a;">Knows your menu, service style, and guest expectations</p>
+      </div>
+      <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
+        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Guest Insights</h3>
+        <p class="text-gray-700"style="color: #1e2d3a;">Access full transcripts and booking analytics anytime.</p>
+      </div>
+      <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
+        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Instant Notifications to Your Team</h3>
+        <p class="text-gray-700"style="color: #1e2d3a;">Stay in control with real-time updates on every guest interaction</p>
+      </div>
+      <div class="rounded-xl shadow-md p-6 text-left" style="background-color: #F8F1E7;">
+        <h3 class="text-lg font-semibold mb-2"style="color: #1e2d3a;">Real-Time CRM Integration</h3>
+        <p class="text-gray-700"style="color: #1e2d3a;">Syncs with your tools to check availability and log bookings instantly</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Integration Section -->
+<section class="gradient-bg py-20 text-center px-6">
+  <h2 class="text-3xl font-bold mb-4">Integrate Seamlessly With Your Favorite Tools</h2>
+  <p class="text-gray-700 max-w-2xl mx-auto mb-10">
+    TableTalk works beautifully with your CRM, POS, and communication platforms — no need to change your existing stack.
+  </p>
+
+  <div class="overflow-hidden relative">
+    <div class="flex space-x-8 w-max px-4 animate-marquee">
+      <!-- Logo set duplicated twice for seamless infinite scroll -->
+      <template id="logo-row">
+        <img src="logos/twilio.svg" alt="Twilio" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/clover.svg" alt="Clover" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/hubspot.png" alt="Hubspot" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/monday.svg" alt="Monday" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/opentable.png" alt="OpenTable" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/oracle.png" alt="Oracle" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/resy.png" alt="Resy" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/rezervem.jpeg" alt="Rezervem" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/sevenrooms.jpeg" alt="SevenRooms" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/simpra.png" alt="Simpra" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/spoton.png" alt="Spoton" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/square.svg" alt="Square" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/toast.png" alt="Toast" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/telegram.svg" alt="Telegram" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/gmail.svg" alt="Gmail" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+        <img src="logos/whatsapp.png" alt="Whatsapp" class="h-16 bg-[#F8F1E7FF] rounded-xl p-2" />
+      </template>
+      <div class="flex space-x-8" id="marquee-track"></div>
+      <div class="flex space-x-8" id="marquee-track-clone"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+</style>
+
+<script>
+  const logoRow = document.getElementById('logo-row').content;
+  const track = document.getElementById('marquee-track');
+  const clone = document.getElementById('marquee-track-clone');
+  for (let i = 0; i < 2; i++) {
+    const clone1 = document.importNode(logoRow, true);
+    const clone2 = document.importNode(logoRow, true);
+    track.appendChild(clone1);
+    clone.appendChild(clone2);
+  }
+</script>
+
+
+<style>
+  @keyframes slide {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-slide {
+    animation: slide 25s linear infinite;
+  }
+</style>
+
+<style>
+  @keyframes slide {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-slide {
+    animation: slide 20s linear infinite;
+  }
+</style>
+
+<!-- Final CTA -->
+<section class="py-24 px-6 text-center">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-4xl font-bold mb-6">Ready to Transform Guest Experience?</h2>
+    <p class="text-lg text-gray-700 mb-8">Let TableTalk handle the conversations, so your team can focus on hospitality. Start with a private demo and experience the difference.</p>
+    <button
+            onclick="toggleModal(true)"
+            style="border: 2px solid #70a2cb; background-color: #70A2CBFF; color: #f6f7f8;"
+            class="px-4 py-2 rounded-full font-semibold hover:opacity-90 transition">
+      Request Demo
+    </button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg[#F8F1E7] text-gray-600 text-sm text-center py-6">
+  <p>&copy; 2025 TableTalk AI powered by SFA AI Studio All rights reserved</p>
+  <div class="mt-2 space-x-4">
+    <a href="/privacy-policy.html" class="hover:underline">Privacy Policy</a>
+    <a href="/terms.html" class="hover:underline">Terms of Service</a>
+    <a href="mailto:info@sfaai.co" class="hover:underline">Contact Us</a>
+  </div>
+</footer>
+
+<!-- Modal Script -->
+<script>
+  function toggleModal(show) {
+    const modal = document.getElementById('demoModal');
+    modal.classList.toggle('hidden', !show);
+    modal.classList.toggle('flex', show);
+  }
+  function validateForm(form) {
+    const fields = form.querySelectorAll('[required]');
+    for (let field of fields) {
+      if (!field.value.trim()) {
+        field.focus();
+        return false;
+      }
+    }
+    document.getElementById('formSuccessMessage').classList.remove('hidden');
+
+    // Optionally hide modal after a delay
+    setTimeout(() => {
+      toggleModal(false);
+      form.reset();
+      document.getElementById('formSuccessMessage').classList.add('hidden');
+    }, 3000);
+
+    return false; // Prevent default form submission
+  }
+</script>
+<script>
+  var vapiInstance = null;
+  const assistant = "2b12c388-8671-41f6-9c3b-79084d00dc3b"; // Your Assistant ID
+  const apiKey = "2b63bf4a-4c39-4d96-90f9-f03f055dd869";  // Your Public API Key
+  const buttonConfig = {
+    showButton: true,
+    position: "top",
+    offset: "400px",
+    width: "80px",
+    height: "80px",
+    customStyle: {
+      position: "relative",
+      margin: "0 auto",
+      display: "block"
+    },
+    idle: {
+      color: "rgb(112,162,203)", // Elegant blue
+      type: "round",
+      icon: "https://unpkg.com/lucide-static@0.321.0/icons/mic.svg"
+    },
+    loading: {
+      color: "rgb(255, 165, 0)", // Orange loading
+      type: "round",
+      icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg"
+    },
+    active: {
+      color: "rgb(255,0,0)", // Red during active call
+      type: "round",
+      icon: "https://unpkg.com/lucide-static@0.321.0/icons/mic-off.svg"
+    }
+  };
+
+  (function (d, t) {
+    var g = document.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g, s);
+
+    g.onload = function () {
+      vapiInstance = window.vapiSDK.run({
+        apiKey: apiKey,
+        assistant: assistant,
+        config: buttonConfig,
+      });
+
+      // 👇 Add click listener to microphone button
+      const micBtn = document.getElementById('mic-button');
+      if (micBtn) {
+        micBtn.addEventListener('click', function () {
+          if (vapiInstance) {
+            vapiInstance.start(); // Starts the assistant when mic is clicked
+          }
+        });
+      }
+    };
+  })(document, "script");
+</script>
+<script>
+  document.getElementById('demoForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = {
+      firstName: form.firstName.value.trim(),
+      lastName: form.lastName.value.trim(),
+      phone: form.phone.value.trim(),
+      email: form.email.value.trim(),
+      message: form.message.value.trim()
+    };
+
+    // 🔗 Replace this URL with your real n8n Webhook URL
+    const webhookUrl = 'https://alickaraman.app.n8n.cloud/webhook/tableTalk';
+
+    try {
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+       // alert('Thank you! Your demo request has been submitted.');
+        toggleModal(false);
+      } else {
+        alert('Something went wrong. Please try again later.');
+      }
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      alert('Error submitting form.');
+    }
+  });
+</script>
+
+
+</body>
+</html>
