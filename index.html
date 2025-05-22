@@ -13,16 +13,16 @@
       overflow-x: hidden;
     }
 
-    .wallpaper-body{background:
-            linear-gradient(to bottom, rgba(248,241,231,0.01), rgba(248,241,231,0.6)),
-            url('wallpaper1.png') no-repeat center center fixed;
+    .wallpaper-body {
+      background:
+              linear-gradient(to bottom, rgba(225, 9, 49, 0.01), rgba(248, 231, 232, 0.6)),
+              url('wallpaper1.png') no-repeat center center;
       background-size: cover;
-      background-color: #f8f1e7;
+      background-color: #f6f6f5;
       background-attachment: scroll;
     }
 
-
-    @media (min-width: 768px) {
+    @media (min-width: 68px) {
       .wallpaper-body {
         background-attachment: fixed;
       }
@@ -49,9 +49,7 @@
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-8px) scale(1.1); }
     }
-    .microphone-animate {
-      animation: pulseBounce 1.8s ease-in-out infinite;
-    }
+
     .modal input:required:invalid {
       border-color: red;
     }
@@ -122,7 +120,7 @@
 <!-- Header -->
 
 <header class="flex justify-between items-center px-8 py-6">
-  <div class="text-2xl font-bold" style="color: #1E2D3A;">TableTalk</div>
+  <div class="text-2xl font-bold" style="color: #1E2D3A;">TableTalk AI</div>
   <div>
     <button onclick="toggleModal(true)" style="border: 2px solid #1e2d3a; color: #1e2d3a;" class="px-4 py-2 rounded-full font-semibold hover:bg-[#F97316] hover:text-white transition">
       Request Demo
@@ -166,6 +164,7 @@
     </div>
   </div>
 </section>
+
 
 
 
@@ -299,7 +298,7 @@
 </section>
 
 <!-- Footer -->
-<footer class="bg[#F8F1E7] text-gray-600 text-sm text-center py-6">
+<footer class="bg-[#F8F1E7] text-gray-600 text-sm text-center py-6">
   <p>&copy; 2025 TableTalk AI powered by SFA AI Studio All rights reserved</p>
   <div class="mt-2 space-x-4">
     <a href="/privacy-policy.html" class="hover:underline">Privacy Policy</a>
