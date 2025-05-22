@@ -13,13 +13,18 @@
       overflow-x: hidden;
     }
 
-    .wallpaper-body {
+    
+    .bg-fixed-fake {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
       background:
               linear-gradient(to bottom, rgba(225, 9, 49, 0.01), rgba(248, 231, 232, 0.6)),
               url('wallpaper1.png') no-repeat center center;
       background-size: cover;
       background-color: #f6f6f5;
-      background-attachment: fixed;
+      width: 100vw;
+      height: 100vh;
     }
 
     @keyframes pulseBounce {
@@ -35,7 +40,7 @@
 <body class="wallpaper-body text-gray-800 min-h-screen">
 <div id="tsparticles"></div>
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-
+<div class="bg-fixed-fake"></div>
 <!-- Model -->
 <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
   <!-- Outer wrapper (centered modal box) with  -->
@@ -97,7 +102,7 @@
 <!-- Header -->
 
 <header class="flex justify-between items-center px-8 py-6">
-  <div class="text-2xl font-bold" style="color: #1E2D3A;">TableTalk AI iiiiiiiiiiiii</div>
+  <div class="text-2xl font-bold" style="color: #1E2D3A;">TableTalk AI iiiiiiiiii</div>
   <div>
     <button onclick="toggleModal(true)" style="border: 2px solid #1e2d3a; color: #1e2d3a;" class="px-4 py-2 rounded-full font-semibold hover:bg-[#F97316] hover:text-white transition">
       Request Demo
